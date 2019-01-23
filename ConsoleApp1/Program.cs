@@ -9,9 +9,10 @@ namespace ConsoleApp1
 
     class Program
     {
+
         static void Main(string[] args)
         {
-            Examples.Fibonacci(5);
+            Console.WriteLine(CodeWars.Kata.SpinWords("Hey fellow warriors"));
         }
     }
 }
