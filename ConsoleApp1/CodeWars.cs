@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CodeWars
@@ -173,6 +174,33 @@ namespace CodeWars
         {
             return !(a?.Length != b?.Length) && a.Select(x => x * x).OrderBy(o => o).SequenceEqual(b.OrderBy(o => o));
         }
-
+        public static int[] DeleteNth(int[] arr, int x)
+        {
+            return arr.Where((element, i) => arr.Take(i).Count(a => a == element) < x).ToArray();
+        }
+        public static double[] Tribonacci(double[] signature, int n)
+        {
+            if (n < 4)
+                return signature.Take(n).ToArray();
+            var res = signature.ToList();
+            for (int i = 3; i < n; i++)
+            {
+                res.Add(res[i - 3] + res[i - 2] + res[i - 1]);
+            }
+            return res.ToArray();
+        }
+        public static int CountSmileys(string[] smileys)
+        {
+            return smileys.Count(str
+                => str.Length == 2 && (str[0].Equals(':') || str[0].Equals(';')) && (str[1].Equals(')') || str[1].Equals('D'))
+                || str.Length == 3 && (str[0].Equals(':') || str[0].Equals(';')) && (str[1].Equals('-') || str[1].Equals('~')) && (str[2].Equals(')') || str[2].Equals('D'))
+                   );
+        }
+        public static int CountSmileysBests(string[] smileys)
+        {
+            //Read regular expressions.
+            return Regex.Matches(string.Join(" ", smileys), "([:;][-~]?)[)D]").Count;
+            //return smileys.Count(s => Regex.IsMatch(s, @"^[:;]{1}[~-]{0,1}[\)D]{1}$"));
+        }
     }
 }

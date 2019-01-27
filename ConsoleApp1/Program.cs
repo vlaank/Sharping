@@ -12,7 +12,12 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            Console.WriteLine(  CodeWars.Kata.compBest(new int[0], null));
+            var smiles = new string[0];// { ":)", ":(", ":D", ":O", ":;" };
+            int total = smiles.Count(str => str.Length == 2
+            ? (str[0].Equals(':') || str[0].Equals(';')) && (str[1].Equals(')') || str[1].Equals('D'))
+            : (str[0].Equals(':') || str[0].Equals(';')) && (str[1].Equals('-') || str[1].Equals('~')) && (str[2].Equals(')') || str[2].Equals('D'))
+            );
+            Console.WriteLine(total);
         }
     }
 }
